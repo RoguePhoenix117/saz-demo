@@ -1,0 +1,10 @@
+query BoosterDiameter($limit: Int) {
+    rockets(limit: $limit) {
+        id
+        boosters
+        company
+        diameter {
+            meters
+        }
+    }
+}
