@@ -109,7 +109,7 @@ const stats = [
     title: 'Scaling',
     content: (
       <>
-        <StatsText>Because data</StatsText> is mirroed from client to server, the larger the project, the more data bandwidth you will save.
+        <StatsText>Because data</StatsText> is mirrored from client to server, the larger the project, the more data bandwidth you will save.
       </>
     ),
   },

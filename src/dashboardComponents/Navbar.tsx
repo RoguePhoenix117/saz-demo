@@ -11,6 +11,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  Portal,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
@@ -87,7 +88,7 @@ export default function Navbar() {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
+            bg={'red.400'}
             href={'/signup'}
             _hover={{
               bg: 'pink.300',
@@ -130,19 +131,21 @@ const DesktopNav = () => {
             </PopoverTrigger>
 
             {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
+              <Portal>
+                <PopoverContent
+                  border={0}
+                  boxShadow={'xl'}
+                  bg={popoverContentBgColor}
+                  p={4}
+                  rounded={'xl'}
+                  minW={'sm'}>
+                  <Stack>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              </Portal>
             )}
           </Popover>
         </Box>
@@ -159,12 +162,12 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+      _hover={{ bg: useColorModeValue('teal.50', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
+            _groupHover={{ color: 'teal.400' }}
             fontWeight={500}>
             {label}
           </Text>
@@ -178,7 +181,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           justify={'flex-end'}
           align={'center'}
           flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'teal.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
@@ -257,41 +260,41 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Inspiration',
+    label: 'See Project Results',
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
+        label: 'Baseball Team Rest API',
+        subLabel: 'Starting with what I know',
+        href: '/searchTeams',
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        label: 'SpaceX Booster GraphQL Query',
+        subLabel: 'Learning a new way to query data',
+        href: '/searchRockets',
       },
     ],
   },
   {
-    label: 'Find Work',
+    label: 'Education Resources',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
+        label: 'GraphQL',
+        subLabel: 'Describe your data, Ask for what you want, Get predictable results',
+        href: 'https://graphql.org/',
       },
       {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
+        label: 'NEXT.JS',
+        subLabel: 'The React Framework for the Web',
+        href: 'https://nextjs.org/',
       },
     ],
   },
   {
-    label: 'Learn Design',
-    href: '#',
+    label: 'Learn to Code',
+    href: 'https://www.nucamp.co/',
   },
   {
-    label: 'Hire Designers',
-    href: '#',
+    label: 'Hire Bootcamp Graduates, LLM\'s wont\'t replace developers',
+    href: 'https://www.nucamp.co/blog/why-chatgpt-will-not-replace-developers',
   },
 ];

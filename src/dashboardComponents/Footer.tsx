@@ -58,36 +58,6 @@ import {
           spacing={4}
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}>
-          <FormControl id="search">
-            <FormLabel color={'white'}>Search Database</FormLabel>
-            <Input type="search" variant='filled'/>
-            <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'teal.400'}
-            href={'/searchTeams'}
-            _hover={{
-              bg: 'teal.300',
-            }}>
-              Search Teams on Rest API
-            </Button>
-            <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'red.600'}
-            href={'/searchRockets'}
-            _hover={{
-              bg: 'red.400',
-            }}>
-              Search Rockets using URQL fetch
-            </Button>
-          </FormControl>
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Twitter'} href={'#'}>
               <FaTwitter color='white'/>
