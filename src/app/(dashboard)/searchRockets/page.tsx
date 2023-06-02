@@ -1,13 +1,27 @@
 'use client'
 import { TableContainer, Table, Thead, Tr, Th, Td, Tbody } from '@chakra-ui/table';
-import { BoosterDiameterDocument, BoosterDiameterQuery } from "@/lib/gql/graphql";
+import { BoosterDiameterDocument, /*BoosterDiameterQuery*/ } from "@/lib/gql/graphql";
 import { useQuery } from 'urql';
+/* import { graphql, DocumentType } from '@/lib/gql'; these imports are no necessary when fetching the data with the query directly here:
+
+type BoosterDiameter = BoosterDiameterQuery; */
 
 export default function SearchRockets() {
     const [result] = useQuery({
         query: BoosterDiameterDocument,
         variables: {limit: 4}
     });
+/* This set of directions I had trouble getting to work and to get types to be imported in. I'm not sure if its my lack of knowledge with TypeScript or with the Codegen tool. In the end, I'm able to import the function graphql and get an autocomplete of my query, but not able to get the types imported or working to allow the query to go through. At this point I prefered a working demonstration over being able to do the full query.
+    const query = (graphql('query BoosterDiameter($limit: Int) {
+      rockets(limit: $limit) {
+        id
+       boosters
+        company
+        diameter {
+          meters
+        }
+      }
+    }')) */
     const { data, fetching, error } = result;
 
     if (fetching) return <div>fetching query</div>
